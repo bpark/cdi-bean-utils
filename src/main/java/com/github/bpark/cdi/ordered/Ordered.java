@@ -33,10 +33,14 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Qualifier
 @Documented
 @Retention(RUNTIME)
-@Target( { TYPE, METHOD, FIELD, PARAMETER })
+@Target({TYPE, METHOD, FIELD, PARAMETER})
 public @interface Ordered {
 
-    /** the order value */
+    /**
+     * The order value.
+     *
+     * @return the order value
+     */
     @Nonbinding
     int value() default 0;
 }
