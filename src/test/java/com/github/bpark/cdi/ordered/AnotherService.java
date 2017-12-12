@@ -1,10 +1,10 @@
 package com.github.bpark.cdi.ordered;
 
-@Ordered(1)
-public class Service implements OrderedServices {
+@Ordered(2)
+public class AnotherService implements OrderedServices {
 
     @Override
     public int getOrder() {
-        return 1;
+        return 2;
     }
 }
