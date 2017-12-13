@@ -1,7 +1,7 @@
 # cdi-bean-utils
 Implementation of cdi util functionality.
 
-##1. Ordered instance injection
+## 1. Ordered instance injection
 
 Use the ```Ordered()``` qualifier and ```OrderedInstance<>``` to get ordered instances.
 
