@@ -28,11 +28,12 @@ import javax.inject.Inject;
 import java.util.Iterator;
 
 @RunWith(CdiRunner.class)
-@AdditionalClasses({OrderedInstanceFactory.class, AnotherService.class, Service.class})
-public class OrderedTest {
+@AdditionalClasses({OrderedInstanceFactory.class, SimpleServiceOne.class, SimpleServiceTwo.class, AnnotatedServiceTwo.class, AnnotatedServiceOne.class, OrderedExtension.class})
+public class AnnotatedOrderedTest {
 
     @Inject
     @Ordered
+    @MyQualifier
     private OrderedInstance<OrderedServices> instances;
 
     @Test
@@ -44,6 +45,8 @@ public class OrderedTest {
 
         Assert.assertTrue(iterator.hasNext());
         OrderedServices service2 = iterator.next();
+
+        Assert.assertFalse(iterator.hasNext());
 
         Assert.assertEquals(1, service1.getOrder());
         Assert.assertEquals(2, service2.getOrder());

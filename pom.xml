@@ -6,12 +6,13 @@
 
     <groupId>com.github.bpark.cdi</groupId>
     <artifactId>cdi-bean-utils</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
 
     <properties>
         <cdi.api.version>2.0</cdi.api.version>
         <cdi.unit.version>4.0.1</cdi.unit.version>
         <junit.version>4.12</junit.version>
+        <weld.se.core.version>3.0.2.Final</weld.se.core.version>
         <project.scm.id>github</project.scm.id>
     </properties>
 
@@ -148,7 +149,7 @@
         <dependency>
             <groupId>org.jboss.weld.se</groupId>
             <artifactId>weld-se-core</artifactId>
-            <version>3.0.2.Final</version>
+            <version>${weld.se.core.version}</version>
             <scope>test</scope>
         </dependency>
 

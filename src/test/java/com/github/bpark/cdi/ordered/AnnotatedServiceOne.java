@@ -18,8 +18,9 @@
  */
 package com.github.bpark.cdi.ordered;
 
+@MyQualifier
 @Ordered(1)
-public class Service implements OrderedServices {
+public class AnnotatedServiceOne implements OrderedServices {
 
     @Override
     public int getOrder() {

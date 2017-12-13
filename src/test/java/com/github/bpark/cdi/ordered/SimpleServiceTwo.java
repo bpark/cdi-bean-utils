@@ -18,8 +18,9 @@
  */
 package com.github.bpark.cdi.ordered;
 
+
 @Ordered(2)
-public class AnotherService implements OrderedServices {
+public class SimpleServiceTwo implements OrderedServices {
 
     @Override
     public int getOrder() {

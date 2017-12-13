@@ -28,12 +28,12 @@ import java.lang.reflect.ParameterizedType;
 import java.util.Set;
 
 @Dependent
-public class OrderedInstanceFactory {
+class OrderedInstanceFactory {
 
     @Produces
     @Ordered
     @SuppressWarnings("unchecked")
-    public <T> OrderedInstance<T> createInstance(OrderedInstance<T> orderedInstance, InjectionPoint injectionPoint) {
+    public <T> OrderedInstance<T> createInstance(InjectionPoint injectionPoint) {
 
         Set<Annotation> qualifiers = injectionPoint.getQualifiers();
 
@@ -41,6 +41,8 @@ public class OrderedInstanceFactory {
 
         Annotation[] annotations = qualifiers.toArray(new Annotation[qualifiers.size()]);
         Instance<T> instance = CDI.current().select(typeClazz, annotations);
+
+        OrderedInstance orderedInstance = new OrderedInstance();
 
         orderedInstance.setInstance(instance);
 
