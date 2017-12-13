@@ -16,6 +16,23 @@
         <project.scm.id>github</project.scm.id>
     </properties>
 
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+
+    <scm>
+        <connection>scm:git:https://github.com/bpark/cdi-bean-utils.git</connection>
+        <url>https://github.com/bpark/cdi-bean-utils</url>
+        <tag>HEAD</tag>
+    </scm>
+
     <developers>
         <developer>
             <id>bpark</id>
