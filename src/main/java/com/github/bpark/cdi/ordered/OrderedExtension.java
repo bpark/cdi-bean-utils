@@ -32,21 +32,25 @@ public class OrderedExtension implements Extension {
 
     private Set<Annotation> collectedQualifiers = new HashSet<>();
 
-
-    public void captureConfigTypes(@Observes ProcessInjectionPoint<?, ?> pip) {
+    /**
+     * Capture all qualifiers of the {@link OrderedInstance}s.
+     *
+     * @param pip the injection point.
+     */
+    public void captureQualifiers(@Observes ProcessInjectionPoint<?, ?> pip) {
         InjectionPoint ip = pip.getInjectionPoint();
-        if (ip.getType().getTypeName().startsWith("com.github.bpark.cdi.ordered.OrderedInstance")) {
-            System.out.println(ip.getType().getTypeName());
+        if (ip.getType().getTypeName().startsWith(OrderedInstance.class.getTypeName())) {
             Set<Annotation> qualifiers = ip.getQualifiers();
             collectedQualifiers.addAll(qualifiers);
         }
     }
 
-    public void filterSpecialClassBean(@Observes ProcessBeanAttributes<OrderedInstance> event) {
-        System.out.println();
-        System.out.println(event.getAnnotated());
-        System.out.println(event.getAnnotated().getBaseType().getTypeName());
-
+    /**
+     * Add all captured qualifiers to the producer {@link OrderedInstanceFactory}.
+     *
+     * @param event the {@link ProcessBeanAttributes} event.
+     */
+    public void modifyProducer(@Observes ProcessBeanAttributes<OrderedInstance> event) {
         if (event.getAnnotated().isAnnotationPresent(Produces.class)
                 && event.getAnnotated().getBaseType().getTypeName().equals("com.github.bpark.cdi.ordered.OrderedInstance<T>")) {
 
