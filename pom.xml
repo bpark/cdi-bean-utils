@@ -4,7 +4,7 @@
 
     <groupId>com.github.bpark.cdi</groupId>
     <artifactId>cdi-bean-utils</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.3-SNAPSHOT</version>
 
     <name>CDI bean utils</name>
     <description>CDI bean utility classes</description>
